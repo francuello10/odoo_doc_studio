@@ -31,9 +31,6 @@
         'views/doc_workspace_views.xml',
         'views/doc_studio_actions.xml',
     ],
-    'demo': [
-        'demo/doc_demo_data.xml',
-    ],
     'assets': {
         'web.assets_backend': [
             'odoo_doc_studio/static/src/scss/doc_studio.scss',

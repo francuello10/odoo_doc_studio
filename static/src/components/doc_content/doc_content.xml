@@ -115,7 +115,7 @@
                             <t t-if="state.doc.write_uid">
                                 <span class="border-start ps-3" title="Last modified by">
                                     <i class="fa fa-pencil me-1"/> 
-                                    Editado por <t t-esc="state.doc.write_uid[1]"/> 
+                                    Edited by <t t-esc="state.doc.write_uid[1]"/> 
                                     (<t t-esc="state.doc.write_date"/>)
                                 </span>
                             </t>
@@ -123,7 +123,7 @@
                             <!-- Reading Time -->
                             <span class="border-start ps-3" title="Estimated reading time">
                                 <i class="fa fa-clock-o me-1"/> 
-                                <t t-esc="state.readingTime"/> min de lectura
+                                <t t-esc="state.readingTime"/> min read
                             </span>
                         </div>
                         <t t-if="state.viewMode === 'visual'">
