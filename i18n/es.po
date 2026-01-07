@@ -1,0 +1,791 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_doc_studio
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e-20251214\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-07 22:08+0000\n"
+"PO-Revision-Date: 2026-01-07 22:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+"Language: es\n"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "/mnt/docs_repo"
+msgstr "/mnt/docs_repo"
+
+#. module: odoo_doc_studio
+#: model:doc.tag,name:odoo_doc_studio.tag_api
+msgid "API"
+msgstr "API"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,help:odoo_doc_studio.field_res_config_settings__doc_studio_repo_path
+msgid ""
+"Absolute path to the folder containing Markdown files on the server (e.g. "
+"/mnt/docs_repo)."
+msgstr "Ruta absoluta a la carpeta que contiene archivos Markdown en el servidor (ej. /mnt/docs_repo)."
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__active
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_search
+msgid "Active"
+msgstr "Activo"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+msgid "Add people..."
+msgstr "Agregar personas..."
+
+#. module: odoo_doc_studio
+#: model:res.groups,name:odoo_doc_studio.group_doc_studio_manager
+msgid "Administrator"
+msgstr "Administrador"
+
+#. module: odoo_doc_studio
+#: model:ir.actions.act_window,name:odoo_doc_studio.action_doc_page_list
+msgid "All Pages"
+msgstr "Todas las Páginas"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_form
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Author"
+msgstr "Autor"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__color
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__color
+msgid "Color Index"
+msgstr "Índice de Color"
+
+#. module: odoo_doc_studio
+#: model:ir.model,name:odoo_doc_studio.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de Configuración"
+
+#. module: odoo_doc_studio
+#: model:ir.ui.menu,name:odoo_doc_studio.menu_doc_studio_config
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_page_form
+msgid "Content"
+msgstr "Contenido"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__body_html
+msgid "Content (HTML)"
+msgstr "Contenido (HTML)"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__content_md
+msgid "Content (Markdown)"
+msgstr "Contenido (Markdown)"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Copy"
+msgstr "Copiar"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+msgid "Copy Link"
+msgstr "Copiar Enlace"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "Create First Page"
+msgstr "Crear Primera Página"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.actions.act_window,help:odoo_doc_studio.action_doc_tag
+msgid "Create your first documentation tag"
+msgstr "Crea tu primera etiqueta de documentación"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.actions.act_window,help:odoo_doc_studio.action_doc_workspace
+msgid "Create your first documentation workspace"
+msgstr "Crea tu primer espacio de trabajo de documentación"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__create_uid
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__create_uid
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__create_uid
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__create_date
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__create_date
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__create_date
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_git_manager__display_name
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__display_name
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__display_name
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__display_name
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__display_name
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Nombre en Pantalla"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_page_search
+msgid "Doc Page Search"
+msgstr "Búsqueda de Páginas"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_page_tree
+msgid "Doc Pages"
+msgstr "Páginas de Documentación"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+#: model:ir.actions.client,name:odoo_doc_studio.action_doc_studio
+#: model:ir.ui.menu,name:odoo_doc_studio.menu_doc_studio_root
+#: model:res.groups.privilege,name:odoo_doc_studio.res_groups_privilege_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Doc Studio"
+msgstr "Doc Studio"
+
+#. module: odoo_doc_studio
+#: model:ir.actions.server,name:odoo_doc_studio.ir_cron_doc_git_sync_v2_ir_actions_server
+msgid "Doc Studio: Git Auto-Sync"
+msgstr "Doc Studio: Auto-Sincronización Git"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__page_id
+msgid "Document"
+msgstr "Documento"
+
+#. module: odoo_doc_studio
+#: model:ir.model,name:odoo_doc_studio.model_doc_share
+msgid "Document Share"
+msgstr "Compartir Documento"
+
+#. module: odoo_doc_studio
+#: model:ir.ui.menu,name:odoo_doc_studio.menu_doc_studio_app
+msgid "Documentation"
+msgstr "Documentación"
+
+#. module: odoo_doc_studio
+#: model:ir.model,name:odoo_doc_studio.model_doc_page
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_page_form
+msgid "Documentation Page"
+msgstr "Página de Documentación"
+
+#. module: odoo_doc_studio
+#: model:ir.model,name:odoo_doc_studio.model_doc_tag
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_tag_form
+msgid "Documentation Tag"
+msgstr "Etiqueta de Documentación"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_tag_tree
+msgid "Documentation Tags"
+msgstr "Etiquetas de Documentación"
+
+#. module: odoo_doc_studio
+#: model:ir.model,name:odoo_doc_studio.model_doc_workspace
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_form
+msgid "Documentation Workspace"
+msgstr "Espacio de Trabajo de Documentación"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_tree
+msgid "Documentation Workspaces"
+msgstr "Espacios de Trabajo de Documentación"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+msgid "Done"
+msgstr "Hecho"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Edit"
+msgstr "Editar"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__edit_count
+msgid "Edit Count"
+msgstr "Cantidad de Ediciones"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Edit raw HTML code"
+msgstr "Editar código HTML"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Editado por"
+msgstr "Editado por"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_page__current_user_permission__write
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_share__permission__write
+msgid "Editor"
+msgstr "Editor"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Ensure the path is accessible by the Odoo server/container."
+msgstr "Asegúrate de que la ruta sea accesible por el servidor/contenedor de Odoo."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Estimated reading time"
+msgstr "Tiempo estimado de lectura"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__is_favorited
+msgid "Favorited"
+msgstr "Favorito"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__file_path
+msgid "File Path"
+msgstr "Ruta del Archivo"
+
+#. module: odoo_doc_studio
+#: model:doc.tag,name:odoo_doc_studio.tag_getting_started
+msgid "Getting Started"
+msgstr "Primeros Pasos"
+
+#. module: odoo_doc_studio
+#: model:ir.model,name:odoo_doc_studio.model_doc_git_manager
+msgid "Git Operations Manager"
+msgstr "Gestor de Operaciones Git"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_res_config_settings__doc_studio_git_url
+msgid "Git Repository URL"
+msgstr "URL del Repositorio Git"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Git Synchronization"
+msgstr "Sincronización Git"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "HTML Source"
+msgstr "Código HTML"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,help:odoo_doc_studio.field_res_config_settings__doc_studio_git_url
+msgid "HTTPS/SSH URL of the Git repository to clone (Features coming soon)."
+msgstr "URL HTTPS/SSH del repositorio Git para clonar (Funcionalidad próximamente)."
+
+#. module: odoo_doc_studio
+#: model:doc.tag,name:odoo_doc_studio.tag_how_to
+msgid "How-To"
+msgstr "Cómo Hacer"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_git_manager__id
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__id
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__id
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__id
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__id
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_page__visibility__internal
+msgid "Internal"
+msgstr "Interno"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+msgid "Internal (Company)"
+msgstr "Interno (Empresa)"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__last_editor_id
+msgid "Last Editor"
+msgstr "Último Editor"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__write_uid
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__write_uid
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__write_uid
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__write_uid
+msgid "Last Updated by"
+msgstr "Última Actualización por"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__write_date
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__write_date
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__write_date
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__write_date
+msgid "Last Updated on"
+msgstr "Última Actualización el"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Last modified by"
+msgstr "Última modificación por"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__linked_page_ids
+msgid "Linked Documents"
+msgstr "Documentos Vinculados"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "List"
+msgstr "Lista"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "Loading..."
+msgstr "Cargando..."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "Manage All Docs"
+msgstr "Gestionar Todos los Documentos"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Manually sync with remote repository."
+msgstr "Sincronizar manualmente con el repositorio remoto."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Markdown"
+msgstr "Markdown"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_page_form
+msgid "Markdown (Generated)"
+msgstr "Markdown (Generado)"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Markdown Source Editor"
+msgstr "Editor de Código Markdown"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__current_user_permission
+msgid "My Permission"
+msgstr "Mi Permiso"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "New"
+msgstr "Nuevo"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "No Document Selected"
+msgstr "Ningún Documento Seleccionado"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "No results found"
+msgstr "No se encontraron resultados"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+msgid "No specific people shared."
+msgstr "No se compartió con personas específicas."
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_page__current_user_permission__none
+msgid "None"
+msgstr "Ninguno"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "None (Root page)"
+msgstr "Ninguno (Página raíz)"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_page__current_user_permission__owner
+msgid "Owner"
+msgstr "Propietario"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__page_count
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__page_count
+msgid "Page Count"
+msgstr "Cantidad de Páginas"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Page Title"
+msgstr "Título de la Página"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__page_ids
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__page_ids
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_form
+msgid "Pages"
+msgstr "Páginas"
+
+#. module: odoo_doc_studio
+#: model:ir.ui.menu,name:odoo_doc_studio.menu_doc_page_list
+msgid "Pages List"
+msgstr "Lista de Páginas"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__parent_id
+msgid "Parent Page"
+msgstr "Página Padre"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Parent:"
+msgstr "Padre:"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Paste or write your HTML code here..."
+msgstr "Pega o escribe tu código HTML aquí..."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Paste or write your Markdown content here..."
+msgstr "Pega o escribe tu contenido Markdown aquí..."
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Path to the local directory containing markdown files."
+msgstr "Ruta al directorio local que contiene archivos markdown."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+msgid "People with access"
+msgstr "Personas con acceso"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__permission
+msgid "Permission"
+msgstr "Permiso"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_page__visibility__private
+msgid "Private"
+msgstr "Privado"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,help:odoo_doc_studio.field_doc_page__visibility
+msgid ""
+"Private: Only owner and shared users.\n"
+"Internal: All employees.\n"
+"Public: Everyone."
+msgstr ""
+"Privado: Solo propietario y usuarios compartidos.\n"
+"Interno: Todos los empleados.\n"
+"Público: Todos."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_page__visibility__public
+msgid "Public"
+msgstr "Público"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Pull Updates form Remote"
+msgstr "Traer Actualizaciones del Remoto"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Push Changes to Remote"
+msgstr "Enviar Cambios al Remoto"
+
+#. module: odoo_doc_studio
+#: model:doc.tag,name:odoo_doc_studio.tag_reference
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Repository Path"
+msgstr "Ruta del Repositorio"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_res_config_settings__doc_studio_repo_path
+msgid "Repository Path (Local)"
+msgstr "Ruta del Repositorio (Local)"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.res_config_settings_view_form
+msgid "Repository Settings"
+msgstr "Configuración del Repositorio"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_page_search
+msgid "Root Pages"
+msgstr "Páginas Raíz"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Save"
+msgstr "Guardar"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "Search Results"
+msgstr "Resultados de Búsqueda"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "Search..."
+msgstr "Buscar..."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "Select a page from the sidebar or create the first one."
+msgstr "Selecciona una página de la barra lateral o crea la primera."
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__sequence
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__sequence
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: odoo_doc_studio
+#: model:ir.actions.act_window,name:odoo_doc_studio.action_doc_studio_config_settings
+#: model:ir.ui.menu,name:odoo_doc_studio.menu_doc_studio_settings
+msgid "Settings"
+msgstr "Configuración"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "Share"
+msgstr "Compartir"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_share__user_id
+msgid "Shared With"
+msgstr "Compartido Con"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__share_ids
+msgid "Shares"
+msgstr "Compartidos"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__child_ids
+msgid "Sub-pages"
+msgstr "Sub-páginas"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Sync"
+msgstr "Sincronizar"
+
+#. module: odoo_doc_studio
+#: model:ir.actions.server,name:odoo_doc_studio.action_sync_all_from_disk_manual
+msgid "Sync All from Disk"
+msgstr "Sincronizar Todo desde Disco"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_tag__name
+msgid "Tag Name"
+msgstr "Nombre de Etiqueta"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_tag_search
+msgid "Tag Search"
+msgstr "Búsqueda de Etiquetas"
+
+#. module: odoo_doc_studio
+#: model:ir.actions.act_window,name:odoo_doc_studio.action_doc_tag
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__tag_ids
+#: model:ir.ui.menu,name:odoo_doc_studio.menu_doc_tag
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.actions.act_window,help:odoo_doc_studio.action_doc_tag
+msgid "Tags help categorize and filter your documentation pages."
+msgstr "Las etiquetas ayudan a categorizar y filtrar tus páginas de documentación."
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__name
+msgid "Title"
+msgstr "Título"
+
+#. module: odoo_doc_studio
+#: model:doc.tag,name:odoo_doc_studio.tag_troubleshooting
+msgid "Troubleshooting"
+msgstr "Solución de Problemas"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Update from .MD file"
+msgstr "Actualizar desde archivo .MD"
+
+#. module: odoo_doc_studio
+#: model:res.groups,name:odoo_doc_studio.group_doc_studio_user
+msgid "User"
+msgstr "Usuario"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/share_dialog/share_dialog.xml:0
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_page__current_user_permission__read
+#: model:ir.model.fields.selection,name:odoo_doc_studio.selection__doc_share__permission__read
+msgid "Viewer"
+msgstr "Visualizador"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__visibility
+msgid "Visibility"
+msgstr "Visibilidad"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Visual"
+msgstr "Visual"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Visual Rich Text Editor"
+msgstr "Editor Visual de Texto Enriquecido"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_page__workspace_id
+msgid "Workspace"
+msgstr "Espacio de Trabajo"
+
+#. module: odoo_doc_studio
+#: model:ir.model.fields,field_description:odoo_doc_studio.field_doc_workspace__name
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_form
+msgid "Workspace Name"
+msgstr "Nombre del Espacio de Trabajo"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_search
+msgid "Workspace Search"
+msgstr "Búsqueda de Espacios de Trabajo"
+
+#. module: odoo_doc_studio
+#: model:ir.actions.act_window,name:odoo_doc_studio.action_doc_workspace
+#: model:ir.ui.menu,name:odoo_doc_studio.menu_doc_workspace
+msgid "Workspaces"
+msgstr "Espacios de Trabajo"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.actions.act_window,help:odoo_doc_studio.action_doc_workspace
+msgid "Workspaces help you organize documentation by project, team, or topic."
+msgstr "Los espacios de trabajo te ayudan a organizar la documentación por proyecto, equipo o tema."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "You are editing the Markdown source directly."
+msgstr "Estás editando el código Markdown directamente."
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "breadcrumb"
+msgstr "ruta de navegación"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_studio/doc_studio.xml:0
+msgid "in"
+msgstr "en"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "min de lectura"
+msgstr "min de lectura"
+
+#. module: odoo_doc_studio
+#: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_kanban
+msgid "pages"
+msgstr "páginas"
