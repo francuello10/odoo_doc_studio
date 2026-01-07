@@ -789,3 +789,15 @@ msgstr "min de lectura"
 #: model_terms:ir.ui.view,arch_db:odoo_doc_studio.view_doc_workspace_kanban
 msgid "pages"
 msgstr "páginas"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "Edited by"
+msgstr "Editado por"
+
+#. module: odoo_doc_studio
+#. odoo-javascript
+#: code:addons/odoo_doc_studio/static/src/components/doc_content/doc_content.xml:0
+msgid "min read"
+msgstr "min de lectura"
