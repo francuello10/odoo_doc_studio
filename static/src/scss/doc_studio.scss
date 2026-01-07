@@ -239,4 +239,35 @@
         background-color: var(--View-bg);
         border-color: var(--border-color);
     }
+
+    // Notion-like visual elements
+    .o_doc_cover_image {
+        height: 30vh;
+        min-height: 200px;
+        max-height: 400px;
+        width: 100%;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+    }
+
+    .o_doc_cover_placeholder {
+        // Used when no cover, just to space content
+        transition: height 0.3s ease;
+    }
+
+    .o_doc_icon_container {
+        margin-top: -3.5rem; // Negative margin to overlap cover
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 10;
+        padding-left: 2px;
+    }
+
+    .o_doc_icon {
+        font-size: 5rem;
+        line-height: 1;
+        display: inline-block;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
 }

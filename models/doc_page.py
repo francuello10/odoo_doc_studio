@@ -37,6 +37,14 @@ class DocPage(models.Model):
     last_editor_id = fields.Many2one('res.users', string='Last Editor', readonly=True)
     edit_count = fields.Integer(string='Edit Count', default=0, readonly=True)
 
+    # Notion-like UX Fields
+    cover_image = fields.Binary(string="Cover Image", attachment=True)
+    icon = fields.Char(string="Icon", help="Emoji or Icon class")
+    
+    # Locking Mechanism
+    locked_by = fields.Many2one('res.users', string='Locked By', copy=False)
+    locked_at = fields.Datetime(string='Locked At', copy=False)
+
     # Sharing & Visibility
     visibility = fields.Selection([
         ('private', 'Private'),
@@ -329,7 +337,52 @@ class DocPage(models.Model):
             record._sync_to_git()
         return records
 
+    def unlink(self):
+        # Delete file from git sync before removing record
+        for record in self:
+            record._delete_from_git()
+        return super().unlink()
+
+    def action_acquire_lock(self):
+        """Try to acquire lock for current user. Returns success/failure info."""
+        self.ensure_one()
+        current_time = fields.Datetime.now()
+        
+        # Check if locked by someone else
+        if self.locked_by and self.locked_by != self.env.user:
+            # Check timeout (e.g. 30 mins)? For now, strict lock until release
+            # But let's say if locked more than 1 hour, auto-release?
+            # Let's keep strict "Pessimistic Locking" for now.
+            return {
+                'success': False,
+                'locked_by': self.locked_by.name,
+                'locked_at': self.locked_at
+            }
+        
+        self.sudo().write({
+            'locked_by': self.env.user.id,
+            'locked_at': current_time
+        })
+        return {'success': True}
+
+    def action_release_lock(self):
+        """Release lock if held by current user"""
+        self.ensure_one()
+        if self.locked_by == self.env.user:
+            self.sudo().write({
+                'locked_by': False,
+                'locked_at': False
+            })
+            return True
+        return False
+
     def write(self, vals):
+        # Enforce Lock Check before writing content
+        if 'body_html' in vals or 'content_md' in vals or 'name' in vals:
+            for record in self:
+                if record.locked_by and record.locked_by != self.env.user:
+                    raise UserError(_("This document is currently locked by %s. Please try again later.") % record.locked_by.name)
+
         # Handle name uniqueness if changing
         if 'name' in vals:
             for record in self:

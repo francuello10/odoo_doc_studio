@@ -28,6 +28,6 @@ DocSidebar.template = "odoo_doc_studio.DocSidebar";
 DocSidebar.components = { DocSidebar };  // Recursive component
 DocSidebar.props = {
     treeData: { type: Array },
-    currentDocId: { type: Number, optional: true },
+    currentDocId: { type: [Number, Boolean, null], optional: true },
     onSelect: { type: Function },
 };

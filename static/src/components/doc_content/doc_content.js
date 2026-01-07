@@ -73,7 +73,8 @@ export class DocContent extends Component {
 
             const result = await this.orm.read("doc.page", [docId], [
                 "name", "body_html", "content_md", "parent_id", "linked_page_ids",
-                "create_uid", "create_date", "write_uid", "write_date"
+                "create_uid", "create_date", "write_uid", "write_date",
+                "cover_image", "icon", "locked_by"
             ]);
             if (result && result.length > 0) {
                 this.state.doc = result[0];
@@ -190,8 +191,15 @@ export class DocContent extends Component {
     }
 
 
-    toggleEdit() {
+    async toggleEdit() {
         if (this.state.mode === 'view') {
+            // Check Lock
+            const lockResult = await this.orm.call("doc.page", "action_acquire_lock", [this.state.doc.id]);
+            if (!lockResult.success) {
+                this.notification.add(`Document is locked by ${lockResult.locked_by}`, { type: "danger" });
+                return;
+            }
+
             // CRITICAL: Ensure editContent is a fresh string from doc.body_html
             this.state.editContent = this.state.doc.body_html || '';
             this.state.editMarkdown = this.state.doc.content_md || '';
@@ -200,6 +208,9 @@ export class DocContent extends Component {
             // Refresh parents list when entering edit mode to ensure it's up to date
             this.loadParents();
         } else {
+            // Cancel Edit - Release Lock
+            await this.orm.call("doc.page", "action_release_lock", [this.state.doc.id]);
+
             this.state.mode = 'view';
             this.state.showCodeView = false; // Reset code view when canceling
             // Update HTML content when canceling edit
@@ -276,6 +287,9 @@ export class DocContent extends Component {
                 parent_id: this.state.editParentId ? parseInt(this.state.editParentId) : false,
             });
 
+            // Release Lock
+            await this.orm.call("doc.page", "action_release_lock", [this.state.doc.id]);
+
             // Sync to disk immediately to persist changes to MD files
             await this.orm.call("doc.page", "action_sync_to_disk", [this.state.doc.id]);
 
@@ -290,6 +304,15 @@ export class DocContent extends Component {
             this.notification.add("Failed to save document", { type: "danger" });
         } finally {
             this.state.isLoading = false;
+        }
+    }
+
+    async updateIcon() {
+        // Simple prompt for now, could be an emoji picker later
+        const icon = prompt("Enter an emoji for page icon:", this.state.doc.icon || "📄");
+        if (icon) {
+            await this.orm.write("doc.page", [this.state.doc.id], { icon: icon });
+            await this.loadDoc(this.state.doc.id);
         }
     }
 
