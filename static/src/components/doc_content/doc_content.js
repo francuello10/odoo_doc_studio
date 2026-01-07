@@ -383,6 +383,11 @@ export class DocContent extends Component {
             },
         };
     }
+
+    get printUrl() {
+        if (!this.state.doc) return '#';
+        return `/report/pdf/odoo_doc_studio.report_doc_page_template/${this.state.doc.id}`;
+    }
 }
 
 DocContent.template = "odoo_doc_studio.DocContent";

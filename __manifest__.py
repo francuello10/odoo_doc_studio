@@ -25,6 +25,7 @@
         'data/config_data.xml',
         'data/server_actions.xml',
         'data/doc_git_cron.xml',
+        'report/doc_page_report.xml',
         'views/doc_page_views.xml',
         'views/res_config_settings_views.xml',
         'views/doc_tag_views.xml',

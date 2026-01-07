@@ -38,6 +38,12 @@
                                 <i class="fa fa-file-text-o me-1"/> Markdown
                             </button>
                         </div>
+                        <!-- Print Actions -->
+                        <div class="btn-group me-2 shadow-sm">
+                             <a class="btn btn-outline-secondary" t-att-href="printUrl" target="_blank" title="Print PDF">
+                                <i class="fa fa-print me-1"/> PDF
+                             </a>
+                        </div>
                     </t>
                     <div class="o_doc_toolbar_actions d-flex align-items-center">
                         <t t-if="state.mode === 'view'">

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Report Action -->
+        <record id="action_report_doc_page" model="ir.actions.report">
+            <field name="name">Export PDF</field>
+            <field name="model">doc.page</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">odoo_doc_studio.report_doc_page_template</field>
+            <field name="report_file">odoo_doc_studio.report_doc_page_template</field>
+            <field name="print_report_name">'Documentation - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_doc_page"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Report Template -->
+        <template id="report_doc_page_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <!-- CSS for Report -->
+                            <style>
+                                .doc-title {
+                                    color: #111827;
+                                    font-size: 28px;
+                                    font-weight: bold;
+                                    margin-bottom: 20px;
+                                    border-bottom: 2px solid #eaecef;
+                                    padding-bottom: 10px;
+                                }
+                                .doc-meta {
+                                    color: #6b7280;
+                                    font-size: 12px;
+                                    margin-bottom: 30px;
+                                    font-style: italic;
+                                }
+                                .doc-content {
+                                    font-family: 'Open Sans', sans-serif;
+                                    line-height: 1.6;
+                                    font-size: 14px;
+                                }
+                                .doc-content h1 { font-size: 24px; color: #374151; margin-top: 20px; }
+                                .doc-content h2 { font-size: 20px; color: #374151; margin-top: 15px; border-bottom: 1px solid #eee; }
+                                .doc-content h3 { font-size: 16px; color: #374151; margin-top: 15px; }
+                                .doc-content img { max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #eee; border-radius: 4px; }
+                                .doc-content pre { background: #f3f4f6; padding: 10px; border-radius: 4px; font-size: 12px; overflow-wrap: break-word; }
+                                .doc-content code { background: #f3f4f6; padding: 2px 4px; border-radius: 2px; color: #ef4444; }
+                                .doc-content blockquote { border-left: 4px solid #e5e7eb; padding-left: 10px; color: #4b5563; }
+                                .doc-content table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+                                .doc-content th, .doc-content td { border: 1px solid #e5e7eb; padding: 8px; }
+                                .doc-content th { background-color: #f9fafb; font-weight: 600; }
+                            </style>
+
+                            <!-- Document Header -->
+                            <div class="doc-title">
+                                <span t-field="doc.name"/>
+                            </div>
+
+                            <!-- Metadata -->
+                            <div class="doc-meta">
+                                <span><i class="fa fa-folder-open"/> Workspace: <span t-field="doc.workspace_id.name"/></span> |
+                                <span><i class="fa fa-user"/> Author: <span t-field="doc.create_uid.name"/></span> |
+                                <span><i class="fa fa-calendar"/> Updated: <span t-field="doc.write_date" t-options='{"widget": "date"}'/></span>
+                            </div>
+
+                            <!-- Main Content (HTML rendered) -->
+                            <div class="doc-content">
+                                <span t-field="doc.body_html"/>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
