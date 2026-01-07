@@ -58,9 +58,21 @@ Doc Studio transforms Odoo into a powerful, modern documentation platform that d
 - Version control built-in
 - Automated backup and restore
 
+### 7. **Professional PDF Export**
+- **Native Report Engine:** Generate clean, printable PDFs directly from Odoo
+- **Print-Ready:** Optimized styles for paper output including metadata
+- **One-Click:** Print button integrated directly in the document toolbar
+
+### 8. **Enhanced Editor Experience**
+- **Writing Focus:** Centered, distraction-free writing area (900px width)
+- **True WYSIWYG:** What you see in the editor is exactly what you get in the PDF
+- **Rich Media:** Drag and drop images, resize them, and they automatically adapt to any screen
+
 ## 📊 Comparison: Doc Studio vs Others
 
 | Feature | **Doc Studio** | Confluence | Google Docs | Docusaurus | Odoo Knowledge |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **PDF Export** | **Native Professional** | Plugin required | Native | Plugin required | Basic |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Storage Format** | **Markdown (.md)** | Proprietary | Proprietary | Markdown | Proprietary (HTML) |
 | **Version Control** | **Native Git** | Internal history | Internal history | Git | Internal history |

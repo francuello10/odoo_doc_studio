@@ -31,6 +31,8 @@ odoo_doc_studio/
 │   ├── doc_share.py         # Sharing & permissions
 │   ├── doc_git.py           # Git operations
 │   └── res_config_settings.py
+├── report/
+│   └── doc_page_report.xml  # QWeb PDF Report definition
 ├── views/
 │   ├── doc_page_views.xml
 │   ├── doc_workspace_views.xml
