@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- AI Composer Rule for Doc Studio Editor -->
+    <record id="ai_composer_doc_page" model="ai.composer">
+        <field name="name">doc_page_editor</field>
+        <field name="interface_key">html_field_record</field>
+        <field name="focused_models" eval="[(4, ref('odoo_doc_studio.model_doc_page'))]"/>
+        <field name="default_prompt">You are a technical documentation writer. Create clear, well-structured documentation with:
+- Proper headings using # for H1, ## for H2, etc.
+- Code examples in fenced code blocks when relevant
+- Step-by-step numbered instructions
+- Bullet points for lists
+- Tables for structured data when appropriate
+Write in a professional, clear tone. Be concise but comprehensive.</field>
+    </record>
+</odoo>

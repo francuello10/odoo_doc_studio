@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.doc.studio</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Doc Studio" string="Doc Studio" name="odoo_doc_studio" groups="odoo_doc_studio.group_doc_studio_manager">
+                    <block title="Repository Settings" name="doc_studio_repo_setting">
+                        <setting string="Repository Path" help="Path to the local directory containing markdown files.">
+                            <field name="doc_studio_repo_path" placeholder="/mnt/docs_repo"/>
+                            <div class="text-muted">
+                                Ensure the path is accessible by the Odoo server/container.
+                            </div>
+                        </setting>
+                        <setting string="Git Synchronization" help="Manually sync with remote repository.">
+                            <div class="row mt16">
+                                <div class="col-6">
+                                    <button name="action_git_push" type="object" string="Push Changes to Remote" class="btn-primary" icon="fa-cloud-upload"/>
+                                </div>
+                                <div class="col-6">
+                                    <button name="action_git_pull" type="object" string="Pull Updates form Remote" class="btn-secondary" icon="fa-cloud-download"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Configure Action to open Settings directly from our Menu -->
+    <record id="action_doc_studio_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'module' : 'odoo_doc_studio'}</field>
+    </record>
+</odoo>

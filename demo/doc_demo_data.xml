@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Demo Workspace -->
+    <record id="demo_workspace_product" model="doc.workspace">
+        <field name="name">Product Documentation</field>
+        <field name="description">Documentation about our product features and usage</field>
+        <field name="color">4</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <!-- Demo Pages -->
+    <record id="demo_page_welcome" model="doc.page">
+        <field name="name">Welcome to Doc Studio</field>
+        <field name="workspace_id" ref="workspace_default"/>
+        <field name="tag_ids" eval="[(6, 0, [ref('tag_getting_started')])]"/>
+        <field name="sequence">1</field>
+        <field name="content_md"># Welcome to Doc Studio
+
+Welcome to your new documentation workspace! Doc Studio is a Confluence-like documentation tool built natively for Odoo.
+
+## Features
+
+- **Rich Editor**: Use the visual WYSIWYG editor with slash commands
+- **AI Assistance**: Press `/` and select AI to generate content
+- **Workspaces**: Organize documentation by project or team
+- **Tags**: Categorize pages for easy filtering
+- **Markdown Backend**: All content stored as Markdown for Git versioning
+
+## Getting Started
+
+1. Create a new page using the "New Page" button
+2. Use the editor to write your documentation
+3. Try the AI assistant by typing `/` and selecting "AI"
+4. Organize pages into workspaces and add tags
+
+## Navigation
+
+Use the sidebar to navigate between pages. Pages can be nested for hierarchical organization.
+
+Happy documenting! 📝</field>
+    </record>
+
+    <record id="demo_page_quickstart" model="doc.page">
+        <field name="name">Quick Start Guide</field>
+        <field name="parent_id" ref="demo_page_welcome"/>
+        <field name="workspace_id" ref="workspace_default"/>
+        <field name="tag_ids" eval="[(6, 0, [ref('tag_getting_started'), ref('tag_how_to')])]"/>
+        <field name="sequence">2</field>
+        <field name="content_md"># Quick Start Guide
+
+This guide will help you get up and running with Doc Studio in minutes.
+
+## Step 1: Create Your First Page
+
+Click the **New Page** button in the top bar to create a new documentation page.
+
+## Step 2: Edit Content
+
+1. Click the **Edit** button to enter edit mode
+2. Use the WYSIWYG editor to write your content
+3. Try slash commands by typing `/` for quick formatting
+
+## Step 3: Use AI Assistance
+
+1. In edit mode, type `/` to open the command menu
+2. Select **AI** from the options
+3. Describe what you want to write
+4. The AI will generate content for you
+
+## Step 4: Organize Your Documentation
+
+- Assign pages to **Workspaces** for team-based organization
+- Add **Tags** to categorize content
+- Create **nested pages** by setting parent pages
+
+## Tips
+
+- Use the ⭐ button to favorite important pages
+- Link between pages using `[Page Name](doc://id)` syntax
+- Your content is automatically saved as Markdown</field>
+    </record>
+
+    <record id="demo_page_api" model="doc.page">
+        <field name="name">API Reference</field>
+        <field name="workspace_id" ref="demo_workspace_product"/>
+        <field name="tag_ids" eval="[(6, 0, [ref('tag_api'), ref('tag_reference')])]"/>
+        <field name="sequence">10</field>
+        <field name="content_md"># API Reference
+
+This is the API reference documentation for our product.
+
+## Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/docs` | List all documents |
+| POST | `/api/docs` | Create a document |
+| GET | `/api/docs/{id}` | Get document details |
+| PUT | `/api/docs/{id}` | Update a document |
+| DELETE | `/api/docs/{id}` | Delete a document |
+
+## Authentication
+
+All API requests require an API key in the header:
+
+```
+Authorization: Bearer your-api-key
+```
+
+## Example Request
+
+```python
+import requests
+
+response = requests.get(
+    'https://api.example.com/api/docs',
+    headers={'Authorization': 'Bearer your-api-key'}
+)
+print(response.json())
+```
+
+## Rate Limits
+
+- 1000 requests per hour
+- 10 concurrent connections</field>
+    </record>
+</odoo>

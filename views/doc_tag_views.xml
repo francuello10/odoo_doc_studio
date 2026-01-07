@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Search View for Tags -->
+    <record id="view_doc_tag_search" model="ir.ui.view">
+        <field name="name">doc.tag.search</field>
+        <field name="model">doc.tag</field>
+        <field name="arch" type="xml">
+            <search string="Tag Search">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- List View for Tags -->
+    <record id="view_doc_tag_tree" model="ir.ui.view">
+        <field name="name">doc.tag.tree</field>
+        <field name="model">doc.tag</field>
+        <field name="arch" type="xml">
+            <list string="Documentation Tags" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+                <field name="page_count"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View for Tags -->
+    <record id="view_doc_tag_form" model="ir.ui.view">
+        <field name="name">doc.tag.form</field>
+        <field name="model">doc.tag</field>
+        <field name="arch" type="xml">
+            <form string="Documentation Tag">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="page_count"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Tags -->
+    <record id="action_doc_tag" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">doc.tag</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first documentation tag
+            </p>
+            <p>Tags help categorize and filter your documentation pages.</p>
+        </field>
+    </record>
+</odoo>

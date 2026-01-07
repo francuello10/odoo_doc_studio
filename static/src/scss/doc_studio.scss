@@ -1,0 +1,134 @@
+// Odoo Doc Studio SCSS for v19
+// Leveraging Odoo standard classes: .o_view_controller, .o_content, .o_search_panel
+
+.o_doc_studio_app {
+    // Standard Odoo view background
+    background-color: var(--View-bg, #ffffff);
+
+    .bg-view {
+        background-color: var(--View-bg, #ffffff);
+    }
+
+    // Markdown Content Styling (Docusaurus-like)
+    .markdown-body {
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.6;
+        color: #24292e;
+
+        h1,
+        h2,
+        h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        code {
+            background-color: rgba(27, 31, 35, 0.05);
+            border-radius: 3px;
+            padding: 0.2em 0.4em;
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+        }
+
+        pre {
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f6f8fa;
+            border-radius: 3px;
+
+            code {
+                background-color: transparent;
+                padding: 0;
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+
+            th,
+            td {
+                border: 1px solid #dfe2e5;
+                padding: 6px 13px;
+            }
+
+            th {
+                font-weight: 600;
+                background-color: #f6f8fa;
+            }
+
+            tr:nth-child(2n) {
+                background-color: #f6f8fa;
+            }
+        }
+    }
+
+    // Custom Sidebar Enhancements
+    .transition-base {
+        transition: all 0.2s ease;
+    }
+
+    .hover-bg-light:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    .bg-primary-light {
+        background-color: rgba(var(--primary-rgb, 1, 126, 132), 0.08);
+    }
+
+    .o_doc_sidebar_item {
+
+        .fa-folder-o,
+        .fa-folder-open-o {
+            color: #ffc107; // Odoo style folder color
+        }
+    }
+
+    // Recursive connector line improvement
+    .border-light {
+        border-color: #f1f1f1 !important;
+    }
+
+    // Editor Enhancements
+    .o_doc_edit_mode {
+        .o-wysiwyg {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            background: #fff;
+            min-height: 400px;
+
+            .odoo-editor-editable {
+                padding: 2rem !important;
+                min-height: 400px;
+                outline: none !important;
+            }
+        }
+
+        textarea {
+            font-family: 'Fira Code', 'Cascadia Code', monospace;
+            padding: 1.5rem;
+            line-height: 1.6;
+        }
+    }
+}

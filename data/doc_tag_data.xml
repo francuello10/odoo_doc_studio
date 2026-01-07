@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Default Tags for Documentation -->
+    <record id="tag_getting_started" model="doc.tag">
+        <field name="name">Getting Started</field>
+        <field name="color">1</field>
+        <field name="sequence">1</field>
+    </record>
+    
+    <record id="tag_how_to" model="doc.tag">
+        <field name="name">How-To</field>
+        <field name="color">2</field>
+        <field name="sequence">2</field>
+    </record>
+    
+    <record id="tag_reference" model="doc.tag">
+        <field name="name">Reference</field>
+        <field name="color">3</field>
+        <field name="sequence">3</field>
+    </record>
+    
+    <record id="tag_troubleshooting" model="doc.tag">
+        <field name="name">Troubleshooting</field>
+        <field name="color">4</field>
+        <field name="sequence">4</field>
+    </record>
+    
+    <record id="tag_api" model="doc.tag">
+        <field name="name">API</field>
+        <field name="color">5</field>
+        <field name="sequence">5</field>
+    </record>
+
+    <!-- Default Workspace -->
+    <record id="workspace_default" model="doc.workspace">
+        <field name="name">General Documentation</field>
+        <field name="description">Default workspace for all documentation</field>
+        <field name="color">10</field>
+        <field name="sequence">1</field>
+    </record>
+</odoo>

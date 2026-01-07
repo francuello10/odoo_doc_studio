@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_sync_all_from_disk_manual" model="ir.actions.server">
+            <field name="name">Sync All from Disk</field>
+            <field name="model_id" ref="model_doc_page"/>
+            <field name="binding_model_id" ref="model_doc_page"/>
+            <field name="state">code</field>
+            <field name="code">
+model.sync_all_from_disk()
+action = {'type': 'ir.actions.client', 'tag': 'reload'}
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doc_page,doc.page,model_doc_page,base.group_user,1,1,1,1
+access_doc_tag,doc.tag,model_doc_tag,base.group_user,1,1,1,1
+access_doc_workspace,doc.workspace,model_doc_workspace,base.group_user,1,1,1,1
+access_doc_share,doc.share,model_doc_share,base.group_user,1,1,1,1

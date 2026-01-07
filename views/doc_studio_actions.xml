@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_doc_studio" model="ir.actions.client">
+        <field name="name">Doc Studio</field>
+        <field name="tag">odoo_doc_studio.DocStudio</field>
+        <field name="path">docs</field>
+        <field name="target">current</field>
+        <field name="params" eval="{}"/>
+    </record>
+
+    <!-- Root Menu -->
+    <menuitem id="menu_doc_studio_root"
+              name="Doc Studio"
+              sequence="10"
+              groups="base.group_user"
+              web_icon="odoo_doc_studio,static/description/icon.png"/>
+
+    <!-- Main Studio App -->
+    <menuitem id="menu_doc_studio_app"
+              name="Documentation"
+              parent="menu_doc_studio_root"
+              action="action_doc_studio"
+              sequence="1"/>
+
+    <!-- Configuration Menu (Restricted to Managers and System Admins) -->
+    <menuitem id="menu_doc_studio_config"
+              name="Configuration"
+              parent="menu_doc_studio_root"
+              groups="odoo_doc_studio.group_doc_studio_manager,base.group_system"
+              sequence="100"/>
+
+    <!-- Settings Menu -->
+    <menuitem id="menu_doc_studio_settings"
+              name="Settings"
+              parent="menu_doc_studio_config"
+              action="action_doc_studio_config_settings"
+              sequence="1"/>
+
+    <!-- Pages List Menu -->
+    <menuitem id="menu_doc_page_list"
+              name="Pages List"
+              parent="menu_doc_studio_config"
+              action="action_doc_page_list"
+              sequence="5"/>
+
+    <!-- Workspaces -->
+    <menuitem id="menu_doc_workspace"
+              name="Workspaces"
+              parent="menu_doc_studio_config"
+              action="action_doc_workspace"
+              sequence="10"/>
+
+    <!-- Tags -->
+    <menuitem id="menu_doc_tag"
+              name="Tags"
+              parent="menu_doc_studio_config"
+              action="action_doc_tag"
+              sequence="20"/>
+</odoo>
+

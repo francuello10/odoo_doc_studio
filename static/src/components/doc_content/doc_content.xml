@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="odoo_doc_studio.DocContent">
+        <div class="o_doc_content h-100 d-flex flex-column">
+            <div class="o_doc_toolbar d-flex justify-content-between align-items-center p-3 border-bottom">
+                <div class="d-flex flex-column flex-grow-1 me-4">
+                    <t t-if="state.mode === 'view'">
+                        <h2 class="m-0" t-if="state.doc" t-esc="state.doc.name"/>
+                    </t>
+                    <t t-else="">
+                         <input type="text" class="form-control mb-2 fs-3 fw-bold" t-model="state.editTitle" placeholder="Page Title"/>
+                         <div class="d-flex align-items-center">
+                             <label class="me-2 text-muted small">Parent:</label>
+                             <select class="form-select form-select-sm w-auto" t-model="state.editParentId">
+                                 <option value="">None (Root page)</option>
+                                 <t t-foreach="state.availableParents" t-as="parent" t-key="parent.id">
+                                    <option t-if="state.doc and parent.id !== state.doc.id" t-att-value="parent.id">
+                                        <t t-esc="parent.name"/>
+                                    </option>
+                                 </t>
+                             </select>
+                         </div>
+                    </t>
+                </div>
+                <div class="o_doc_actions flex-shrink-0 d-flex gap-2">
+                    <t t-if="state.mode === 'view'">
+                        <button class="btn btn-outline-secondary shadow-sm" t-on-click="syncFromDisk" title="Update from .MD file">
+                            <i class="fa fa-refresh me-1"/> Sync
+                        </button>
+                        <!-- Format Toggles -->
+                        <div class="btn-group me-2 shadow-sm">
+                            <button class="btn" t-att-class="state.viewMode === 'visual' ? 'btn-primary' : 'btn-outline-primary'"
+                                    t-on-click="toggleViewMode" title="Visual Rich Text Editor">
+                                <i class="fa fa-eye me-1"/> Visual
+                            </button>
+                            <button class="btn" t-att-class="state.viewMode === 'markdown' ? 'btn-primary' : 'btn-outline-primary'"
+                                    t-on-click="toggleViewMode" title="Markdown Source Editor">
+                                <i class="fa fa-file-text-o me-1"/> Markdown
+                            </button>
+                        </div>
+                    </t>
+                    <div class="o_doc_toolbar_actions d-flex align-items-center">
+                        <t t-if="state.mode === 'view'">
+                            <button class="btn btn-primary shadow-sm" t-on-click="toggleEdit">
+                                <i class="fa fa-pencil me-1"/> Edit
+                            </button>
+                            <button class="btn btn-outline-danger ms-2" t-on-click="deletePage">
+                                <i class="fa fa-trash"/>
+                            </button>
+                        </t>
+                        <t t-else="">
+                            <!-- format toggles also available in edit mode -->
+                            <div class="btn-group me-2 shadow-sm">
+                                <button class="btn" t-att-class="state.viewMode === 'visual' ? 'btn-primary' : 'btn-outline-primary'"
+                                        t-on-click="toggleViewMode" title="Visual Rich Text Editor">
+                                    <i class="fa fa-eye me-1"/> Visual
+                                </button>
+                                <button class="btn" t-att-class="state.viewMode === 'markdown' ? 'btn-primary' : 'btn-outline-primary'"
+                                        t-on-click="toggleViewMode" title="Markdown Source Editor">
+                                    <i class="fa fa-file-text-o me-1"/> Markdown
+                                </button>
+                            </div>
+
+                            <button class="btn btn-secondary me-2" t-on-click="toggleEdit">Cancel</button>
+                            <button class="btn btn-primary me-2" t-on-click="save">
+                                <i class="fa fa-save me-1"/> Save
+                            </button>
+
+                            <!-- Format Indicator for Edit Mode (HTML) -->
+                            <div class="btn-group shadow-sm">
+                                <button class="btn" t-att-class="state.showCodeView ? 'btn-danger' : 'btn-outline-secondary'" 
+                                        t-on-click="toggleCodeView" title="Edit raw HTML code">
+                                    <i class="fa fa-code me-1"/> <small class="fw-bold">HTML Source</small>
+                                </button>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+
+            <div class="o_doc_body flex-grow-1 p-4" style="overflow-y: auto;">
+                <t t-if="state.isLoading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </t>
+                <t t-elif="state.doc">
+                    <t t-if="state.mode === 'view'">
+                        <!-- Breadcrumbs -->
+                        <nav t-if="state.breadcrumbs and state.breadcrumbs.length > 0" class="o_doc_breadcrumb mb-2" aria-label="breadcrumb">
+                            <ol class="breadcrumb p-0 m-0 bg-transparent small text-muted">
+                                <t t-foreach="state.breadcrumbs" t-as="crumb" t-key="crumb.id">
+                                    <li class="breadcrumb-item">
+                                        <a href="#" class="text-decoration-none" t-on-click="(ev) => this.navigateToPage(crumb.id, ev)">
+                                            <t t-esc="crumb.name"/>
+                                        </a>
+                                    </li>
+                                </t>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <t t-esc="state.doc.name"/>
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <!-- Metadata Bar -->
+                        <div class="o_doc_metadata_bar mb-3 d-flex flex-wrap gap-3 text-muted border-bottom pb-2" style="font-size: 0.85rem;">
+                            <span t-if="state.doc.create_uid" title="Author">
+                                <i class="fa fa-user-circle-o me-1"/> <t t-esc="state.doc.create_uid[1]"/>
+                            </span>
+                            <span t-if="state.doc.create_date" title="Created on">
+                                <i class="fa fa-calendar-o me-1"/> <t t-esc="state.doc.create_date"/>
+                            </span>
+                            
+                            <!-- Last Editor (Explicitly showing name if different or just always for clarity) -->
+                            <t t-if="state.doc.write_uid">
+                                <span class="border-start ps-3" title="Last modified by">
+                                    <i class="fa fa-pencil me-1"/> 
+                                    Editado por <t t-esc="state.doc.write_uid[1]"/> 
+                                    (<t t-esc="state.doc.write_date"/>)
+                                </span>
+                            </t>
+
+                            <!-- Reading Time -->
+                            <span class="border-start ps-3" title="Estimated reading time">
+                                <i class="fa fa-clock-o me-1"/> 
+                                <t t-esc="state.readingTime"/> min de lectura
+                            </span>
+                        </div>
+                        <t t-if="state.viewMode === 'visual'">
+                            <!-- Use t-ref and set innerHTML via JS to avoid escaping issues -->
+                            <div class="o_doc_view_mode markdown-body" t-ref="htmlContent"/>
+                        </t>
+                        <t t-else="">
+                            <div class="o_doc_markdown_mode position-relative h-100">
+                                <div class="position-absolute top-0 end-0 m-2 z-index-1">
+                                    <button class="btn btn-sm btn-light border shadow-sm" t-on-click="copyMarkdownToClipboard">
+                                        <i class="fa fa-clipboard me-1"/> Copy
+                                    </button>
+                                </div>
+                                <pre class="bg-light p-3 border rounded h-100 overflow-auto" style="white-space: pre-wrap; font-family: monospace;"><t t-esc="state.doc.content_md"/></pre>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <div class="o_doc_edit_mode h-100 position-relative d-flex flex-column">
+                             <t t-if="state.showCodeView">
+                                <textarea class="form-control flex-grow-1 font-monospace shadow-none border-0 p-3 bg-white" 
+                                          style="min-height: 500px; outline: none;" 
+                                          t-model="state.editContent"
+                                          placeholder="Paste or write your HTML code here..."/>
+                             </t>
+                             <t t-else="">
+                                <t t-if="state.viewMode === 'markdown'">
+                                    <div class="o_markdown_editor flex-grow-1 d-flex flex-column">
+                                        <div class="alert alert-info py-2 px-3 mb-2 small d-flex align-items-center">
+                                            <i class="fa fa-info-circle me-2"/>
+                                            You are editing the Markdown source directly.
+                                        </div>
+                                        <textarea class="form-control flex-grow-1 font-monospace shadow-none border-0 p-3"
+                                                  style="min-height: 500px; outline: none; resize: none;"
+                                                  t-on-input="onMarkdownChange"
+                                                  t-att-value="state.editMarkdown"
+                                                  placeholder="Paste or write your Markdown content here..."/>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <Wysiwyg config="wysiwygConfig" onLoad="(editor) => this.onEditorLoad(editor)"/>
+                                </t>
+                             </t>
+                        </div>
+                    </t>
+                </t>
+                
+                <!-- Linked Documents Section -->
+                <t t-if="state.linkedPages and state.linkedPages.length > 0">
+                    <div class="o_doc_linked_pages mt-4 pt-3 border-top">
+                        <h5 class="text-muted mb-3">
+                            <i class="fa fa-link me-2"/>Linked Documents
+                        </h5>
+                        <div class="list-group">
+                            <t t-foreach="state.linkedPages" t-as="linkedPage" t-key="linkedPage.id">
+                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center" 
+                                   t-on-click="(ev) => this.navigateToPage(linkedPage.id, ev)">
+                                    <i class="fa fa-file-text-o me-2 text-primary"/>
+                                    <t t-esc="linkedPage.name"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

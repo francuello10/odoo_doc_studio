@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="odoo_doc_studio.DocStudio">
+        <div class="o_action o_doc_studio_app h-100">
+            <!-- Control Panel -->
+            <div class="o_control_panel d-flex flex-column gap-3 px-3 pt-2 pb-3 border-bottom">
+                <div class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-center gap-2 gap-lg-3 flex-grow-1">
+                    <!-- Breadcrumbs & Title -->
+                    <div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0">
+                        <div class="o_breadcrumb d-flex gap-1 text-truncate">
+                            <span class="fw-bold fs-5">Doc Studio</span>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar (Center) -->
+                    <div class="o_control_panel_actions d-flex align-items-center order-2 order-lg-1 w-100 w-lg-auto flex-grow-1 justify-content-center">
+                        <div class="o_cp_searchview d-flex input-group" style="max-width: 600px; width: 100%;">
+                             <div class="o_searchview form-control d-flex align-items-center py-1" role="search">
+                                <i class="o_searchview_icon oi oi-search me-2" role="img" aria-label="Search..."/>
+                                <div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1 mw-100">
+                                    <input type="text" 
+                                           class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0 bg-transparent" 
+                                           placeholder="Search..." 
+                                           accesskey="Q"
+                                           t-on-input="onSearchInput"
+                                           t-model="state.searchTerm"/>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Actions -->
+                    <div class="o_control_panel_navigation d-flex flex-wrap justify-content-end gap-1 order-1 order-lg-2">
+                        <button class="btn btn-light border me-1" 
+                                t-on-click="openList" 
+                                title="Manage All Docs">
+                            <i class="fa fa-list me-1"/>List
+                        </button>
+                        <button class="btn btn-secondary me-1" 
+                                t-if="state.currentDocId" 
+                                t-on-click="openShareDialog">
+                            <i class="fa fa-share-alt me-1"/>Share
+                        </button>
+                        <button class="btn btn-primary" t-on-click="createPage">
+                            <i class="fa fa-plus me-1"/>New
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="o_content d-flex flex-grow-1 overflow-hidden">
+                <!-- Sidebar (Search Panel style) -->
+                <div class="o_search_panel p-0 flex-shrink-0 border-end bg-view h-100 d-flex flex-column" style="width: 260px;">
+                    <div class="o_search_panel_section p-2 flex-grow-1 overflow-auto">
+                        <header class="text-uppercase fw-bold text-muted mb-2 px-2 fs-6">
+                            <t t-if="state.searchTerm">Search Results</t>
+                            <t t-else="">Documents</t>
+                        </header>
+                        
+                        <!-- Search Results -->
+                        <t t-if="state.searchTerm">
+                            <ul class="list-unstyled mb-0">
+                                <t t-foreach="state.searchResults" t-as="result" t-key="result.id">
+                                    <li class="o_search_panel_filter_value">
+                                        <div class="d-flex align-items-center py-1 px-2 rounded cursor-pointer"
+                                             t-att-class="{ 'bg-primary text-white': result.id === state.currentDocId, 'text-dark': result.id !== state.currentDocId }"
+                                             t-on-click="() => this.onPageSelected(result.id)">
+                                            <i class="fa fa-file-text-o me-2 opacity-50"/>
+                                            <div class="text-truncate flex-grow-1">
+                                                <span t-esc="result.name"/>
+                                                <small t-if="result.parent_id" class="d-block text-muted opacity-75" style="font-size: 0.8em;">
+                                                    in <t t-esc="result.parent_id[1]"/>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </t>
+                                <li t-if="state.searchResults.length === 0" class="text-muted text-center py-3">
+                                    No results found
+                                </li>
+                            </ul>
+                        </t>
+                        
+                        <!-- Tree View -->
+                        <t t-else="">
+                            <DocSidebar treeData="state.treeData" currentDocId="state.currentDocId" onSelect="(id) => this.onPageSelected(id)"/>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- Main Content (Renderer style) -->
+                <div class="o_renderer flex-grow-1 h-100 d-flex flex-column bg-view">
+                    <t t-if="state.isLoading">
+                        <div class="d-flex align-items-center justify-content-center h-100">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-elif="state.currentDocId">
+                        <DocContent docId="state.currentDocId" forceEdit="state.forceEdit" onUpdate="() => this.onPageUpdated()"/>
+                    </t>
+                    <t t-else="">
+                        <div class="o_view_nocontent d-flex align-items-center justify-content-center h-100">
+                            <div class="o_nocontent_help text-center">
+                                <p class="o_view_nocontent_smiling_face">
+                                    No Document Selected
+                                </p>
+                                <p>
+                                    Select a page from the sidebar or create the first one.
+                                </p>
+                                <button class="btn btn-primary mt-3" t-on-click="createPage">
+                                    Create First Page
+                                </button>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
+

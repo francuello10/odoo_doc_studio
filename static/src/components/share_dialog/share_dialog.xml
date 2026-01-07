@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="odoo_doc_studio.ShareDialog">
+        <Dialog title="'Share ' + props.docName">
+            <div class="o_share_dialog_content d-flex flex-column gap-3">
+                <!-- 1. Copy Link Section -->
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary flex-grow-1" t-on-click="copyLink">
+                        <i class="fa fa-link me-2"/> Copy Link
+                    </button>
+                    <select class="form-select w-auto" t-model="state.visibility" t-on-change="onVisibilityChange">
+                        <option value="private">Private</option>
+                        <option value="internal">Internal (Company)</option>
+                        <option value="public">Public</option>
+                    </select>
+                </div>
+
+                <hr class="m-0"/>
+
+                <!-- 2. Add People -->
+                <div class="position-relative">
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="Add people..." 
+                           t-model="state.searchTerm"
+                           t-on-input="onUserSearch"/>
+                    
+                    <!-- Search Dropdown -->
+                    <div t-if="state.searchResults.length > 0" 
+                         class="position-absolute w-100 bg-white border rounded shadow-sm mt-1" 
+                         style="z-index: 1000; max-height: 200px; overflow-y: auto;">
+                        <t t-foreach="state.searchResults" t-as="user" t-key="user.id">
+                            <div class="d-flex align-items-center p-2 cursor-pointer dropdown-item"
+                                 t-on-click="() => this.addUser(user)">
+                                <img t-att-src="'/web/image?model=res.users&amp;field=avatar_128&amp;id=' + user.id" 
+                                     class="rounded-circle me-2" 
+                                     style="width: 24px; height: 24px; object-fit: cover;"/>
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold fs-6" t-esc="user.name"/>
+                                    <div class="text-muted small" t-esc="user.email"/>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- 3. People with Access -->
+                <div class="d-flex flex-column gap-2" style="max-height: 300px; overflow-y: auto;">
+                    <div class="text-muted small fw-bold text-uppercase">People with access</div>
+                    
+                    <!-- Owner (Manual entry, assuming current user is owner for now or we fetched it? 
+                         Actually, we didn't fetch owner in JS, maybe we should. 
+                         For now, let's just list shares) -->
+                    
+                    <t t-if="state.shares.length === 0">
+                        <div class="text-muted fst-italic p-2">No specific people shared.</div>
+                    </t>
+
+                    <t t-foreach="state.shares" t-as="share" t-key="share.id">
+                        <div class="d-flex align-items-center gap-2 p-1">
+                            <img t-att-src="'/web/image?model=res.users&amp;field=avatar_128&amp;id=' + share.user_id[0]" 
+                                 class="rounded-circle" 
+                                 style="width: 32px; height: 32px; object-fit: cover;"/>
+                            
+                            <div class="flex-grow-1 text-truncate">
+                                <span t-esc="share.user_id[1]"/>
+                            </div>
+
+                            <select class="form-select form-select-sm w-auto border-0" 
+                                    t-on-change="(ev) => this.updatePermission(share.id, ev.target.value)">
+                                <option value="read" t-att-selected="share.permission === 'read'">Viewer</option>
+                                <option value="write" t-att-selected="share.permission === 'write'">Editor</option>
+                            </select>
+
+                            <button class="btn btn-link text-danger p-0" t-on-click="() => this.removeShare(share.id)">
+                                <i class="fa fa-times"/>
+                            </button>
+                        </div>
+                    </t>
+                </div>
+            </div>
+
+            <t t-set-slot="footer">
+                <button class="btn btn-primary" t-on-click="() => this.props.close()">Done</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

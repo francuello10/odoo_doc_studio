@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="odoo_doc_studio.DocSidebar">
+        <ul class="list-unstyled mb-0 w-100">
+            <t t-foreach="props.treeData" t-as="node" t-key="node.id">
+                <li class="o_doc_sidebar_item">
+                    <div class="d-flex align-items-center py-1 px-2 cursor-pointer transition-base hover-bg-light"
+                         t-att-class="{ 'bg-primary-light text-primary fw-bold border-start border-primary border-3': node.id === props.currentDocId, 'text-muted': node.id !== props.currentDocId }"
+                         t-on-click="(ev) => this.selectPage(node.id, ev)"
+                         style="margin-left: 2px;">
+                        
+                        <!-- Toggle Expand (Only for folders) -->
+                        <span t-if="node.children and node.children.length > 0"
+                              class="me-1 d-flex align-items-center justify-content-center"
+                              style="width: 16px; min-width: 16px; height: 16px;"
+                              t-on-click="(ev) => this.toggleExpand(node.id, ev)">
+                            <i t-attf-class="fa #{state.expanded[node.id] ? 'fa-caret-down' : 'fa-caret-right'} opacity-75"/>
+                        </span>
+                        <span t-else="" class="me-1" style="width: 16px; min-width: 16px;"/>
+                        
+                        <!-- Dynamic Icon (Folder vs File) -->
+                        <span class="me-2 d-flex align-items-center justify-content-center" style="width: 20px;">
+                            <i t-if="node.children and node.children.length > 0" 
+                               t-attf-class="fa #{state.expanded[node.id] ? 'fa-folder-open-o' : 'fa-folder-o'} text-warning opacity-75"/>
+                            <i t-else="" class="fa fa-file-text-o opacity-50"/>
+                        </span>
+
+                        <span class="text-truncate flex-grow-1 user-select-none" 
+                              t-att-class="{ 'text-dark': node.id !== props.currentDocId }"
+                              t-esc="node.name" 
+                              style="font-size: 0.95rem;"/>
+                    </div>
+                </li>
+                
+                <!-- Recursive Section with thinner hierarchy line -->
+                <li t-if="node.children and node.children.length > 0 and state.expanded[node.id]" 
+                    class="ms-3 border-start border-light border-1" 
+                    style="margin-left: 17px !important;">
+                    <DocSidebar treeData="node.children" currentDocId="props.currentDocId" onSelect="props.onSelect"/>
+                </li>
+            </t>
+        </ul>
+    </t>
+</templates>

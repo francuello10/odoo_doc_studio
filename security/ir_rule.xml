@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Rule: See pages that are Internal, Public, Created by me, or Shared with me -->
+        <record id="doc_page_visibility_rule" model="ir.rule">
+            <field name="name">Doc Page Visibility</field>
+            <field name="model_id" ref="model_doc_page"/>
+            <field name="domain_force">['|', '|', ('visibility', 'in', ['internal', 'public']), ('create_uid', '=', user.id), ('share_ids.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Rule: Manage my own shares or shares on pages I own or have write access to -->
+        <!-- For simplicity: Users can see share records for pages they can see. -->
+        <record id="doc_share_visibility_rule" model="ir.rule">
+            <field name="name">Doc Share Visibility</field>
+            <field name="model_id" ref="model_doc_share"/>
+            <field name="domain_force">[('page_id', '!=', False)]</field> <!-- Delegates to page access? No, row level needed. -->
+            <!-- Actually, usually we rely on the relational field. But if searching shares directly: -->
+            <!-- Users should see shares if they can see the page. -->
+            <field name="domain_force">['|', '|', ('page_id.visibility', 'in', ['internal', 'public']), ('page_id.create_uid', '=', user.id), ('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+    </data>
+</odoo>

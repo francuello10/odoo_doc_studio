@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Search View -->
+    <record id="view_doc_page_search" model="ir.ui.view">
+        <field name="name">doc.page.search</field>
+        <field name="model">doc.page</field>
+        <field name="arch" type="xml">
+            <search string="Doc Page Search">
+                <field name="name"/>
+                <filter string="Root Pages" name="root_pages" domain="[('parent_id', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+
+    <!-- List View -->
+    <record id="view_doc_page_tree" model="ir.ui.view">
+        <field name="name">doc.page.tree</field>
+        <field name="model">doc.page</field>
+        <field name="arch" type="xml">
+            <list string="Doc Pages">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="parent_id"/>
+                <field name="file_path"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_doc_page_form" model="ir.ui.view">
+        <field name="name">doc.page.form</field>
+        <field name="model">doc.page</field>
+        <field name="arch" type="xml">
+            <form string="Documentation Page">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id"/>
+                        <field name="sequence"/>
+                        <field name="file_path" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Content" name="content">
+                            <field name="body_html" widget="html" options="{'collaborative': true, 'resizable': true}"/>
+                        </page>
+                        <page string="Markdown (Generated)" name="markdown">
+                            <field name="content_md" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Generic Action -->
+    <record id="action_doc_page_list" model="ir.actions.act_window">
+        <field name="name">All Pages</field>
+        <field name="res_model">doc.page</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_doc_page_search"/>
+        <field name="context">{'search_default_root_pages': 0}</field>
+    </record>
+</odoo>
+

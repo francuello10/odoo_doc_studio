@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Configure the default Git/File Sync path to be inside the module directory 
+             so it's visible in the user's IDE via the Docker bind mount. -->
+        <record id="config_git_repo_path" model="ir.config_parameter">
+            <field name="key">odoo_doc_studio.git_repo_path</field>
+            <field name="value">/mnt/extra-addons/odoo_doc_studio/docs_repo</field>
+        </record>
+    </data>
+</odoo>
