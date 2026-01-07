@@ -99,59 +99,22 @@
                 </t>
                 <t t-elif="state.doc">
                     <t t-if="state.mode === 'view'">
-                        <!-- Breadcrumbs -->
-                        <nav t-if="state.breadcrumbs and state.breadcrumbs.length > 0" class="o_doc_breadcrumb mb-2" aria-label="breadcrumb">
-                            <ol class="breadcrumb p-0 m-0 bg-transparent small text-muted">
-                                <t t-foreach="state.breadcrumbs" t-as="crumb" t-key="crumb.id">
-                                    <li class="breadcrumb-item">
-                                        <a href="#" class="text-decoration-none" t-on-click="(ev) => this.navigateToPage(crumb.id, ev)">
-                                            <t t-esc="crumb.name"/>
-                                        </a>
-                                    </li>
-                                </t>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    <t t-esc="state.doc.name"/>
-                                </li>
-                            </ol>
-                        </nav>
-
-                        <!-- Metadata Bar -->
-                        <div class="o_doc_metadata_bar mb-3 d-flex flex-wrap gap-3 text-muted border-bottom pb-2" style="font-size: 0.85rem;">
-                            <span t-if="state.doc.create_uid" title="Author">
-                                <i class="fa fa-user-circle-o me-1"/> <t t-esc="state.doc.create_uid[1]"/>
-                            </span>
-                            <span t-if="state.doc.create_date" title="Created on">
-                                <i class="fa fa-calendar-o me-1"/> <t t-esc="state.doc.create_date"/>
-                            </span>
-                            
-                            <!-- Last Editor (Explicitly showing name if different or just always for clarity) -->
-                            <t t-if="state.doc.write_uid">
-                                <span class="border-start ps-3" title="Last modified by">
-                                    <i class="fa fa-pencil me-1"/> 
-                                    Edited by <t t-esc="state.doc.write_uid[1]"/> 
-                                    (<t t-esc="state.doc.write_date"/>)
-                                </span>
-                            </t>
-
-                            <!-- Reading Time -->
-                            <span class="border-start ps-3" title="Estimated reading time">
-                                <i class="fa fa-clock-o me-1"/> 
-                                <t t-esc="state.readingTime"/> min read
-                            </span>
-                        <!-- Cover Image -->
+                        <!-- 1. Cover Image Area -->
                         <div class="o_doc_cover_image" t-if="state.doc.cover_image">
                             <img t-attf-src="/web/image/doc.page/{{state.doc.id}}/cover_image" alt="Cover" class="w-100 h-100 object-fit-cover"/>
                         </div>
                         <div class="o_doc_cover_placeholder bg-secondary-subtle" t-elif="state.viewMode === 'visual'" style="height: 0px;" />
 
-                        <div class="container-fluid px-5 pb-5"> 
-                            <!-- Icon -->
+                        <!-- 2. Main Content Container (Notion-style) -->
+                        <div class="container-fluid px-4 px-lg-5 pb-5">
+                            
+                            <!-- Icon (Overlapping Cover) -->
                             <div class="o_doc_icon_container" t-if="state.doc.icon or state.doc.cover_image">
                                 <span class="o_doc_icon user-select-none" t-if="state.doc.icon" t-esc="state.doc.icon"/>
                             </div>
 
                             <!-- Breadcrumbs -->
-                            <nav t-if="state.breadcrumbs and state.breadcrumbs.length > 0" class="o_doc_breadcrumb mb-2 mt-3" aria-label="breadcrumb">
+                            <nav t-if="state.breadcrumbs and state.breadcrumbs.length > 0" class="o_doc_breadcrumb mb-3 mt-3" aria-label="breadcrumb">
                                 <ol class="breadcrumb p-0 m-0 bg-transparent small text-muted">
                                     <t t-foreach="state.breadcrumbs" t-as="crumb" t-key="crumb.id">
                                         <li class="breadcrumb-item">
@@ -165,7 +128,7 @@
                                     </li>
                                 </ol>
                             </nav>
-    
+
                             <!-- Metadata Bar -->
                             <div class="o_doc_metadata_bar mb-4 d-flex flex-wrap gap-3 text-muted border-bottom pb-2" style="font-size: 0.85rem;">
                                 <span t-if="state.doc.create_uid" title="Author">
@@ -175,7 +138,6 @@
                                     <i class="fa fa-calendar-o me-1"/> <t t-esc="state.doc.create_date"/>
                                 </span>
                                 
-                                <!-- Last Editor (Explicitly showing name if different or just always for clarity) -->
                                 <t t-if="state.doc.write_uid">
                                     <span class="border-start ps-3" title="Last modified by">
                                         <i class="fa fa-pencil me-1"/> 
@@ -183,28 +145,29 @@
                                         (<t t-esc="state.doc.write_date"/>)
                                     </span>
                                 </t>
-    
-                                <!-- Reading Time -->
+
                                 <span class="border-start ps-3" title="Estimated reading time">
                                     <i class="fa fa-clock-o me-1"/> 
                                     <t t-esc="state.readingTime"/> min read
                                 </span>
                             </div>
-                        </div>
-                        <t t-if="state.viewMode === 'visual'">
-                            <!-- Use t-ref and set innerHTML via JS to avoid escaping issues -->
-                            <div class="o_doc_view_mode markdown-body" t-ref="htmlContent"/>
-                        </t>
-                        <t t-else="">
-                            <div class="o_doc_markdown_mode position-relative h-100">
-                                <div class="position-absolute top-0 end-0 m-2 z-index-1">
-                                    <button class="btn btn-sm btn-light border shadow-sm" t-on-click="copyMarkdownToClipboard">
-                                        <i class="fa fa-clipboard me-1"/> Copy
-                                    </button>
+
+                            <!-- Content Display -->
+                            <t t-if="state.viewMode === 'visual'">
+                                <div class="o_doc_view_mode markdown-body" t-ref="htmlContent"/>
+                            </t>
+                            <t t-else="">
+                                <div class="o_doc_markdown_mode position-relative">
+                                    <div class="position-absolute top-0 end-0 m-2 z-index-1">
+                                        <button class="btn btn-sm btn-light border shadow-sm" t-on-click="copyMarkdownToClipboard">
+                                            <i class="fa fa-clipboard me-1"/> Copy
+                                        </button>
+                                    </div>
+                                    <pre class="bg-light p-3 border rounded overflow-auto" style="white-space: pre-wrap; font-family: monospace; min-height: 400px;"><t t-esc="state.doc.content_md"/></pre>
                                 </div>
-                                <pre class="bg-light p-3 border rounded h-100 overflow-auto" style="white-space: pre-wrap; font-family: monospace;"><t t-esc="state.doc.content_md"/></pre>
-                            </div>
-                        </t>
+                            </t>
+                        
+                        </div> <!-- End Container -->
                     </t>
                     <t t-else="">
                         <div class="o_doc_edit_mode h-100 position-relative d-flex flex-column">
